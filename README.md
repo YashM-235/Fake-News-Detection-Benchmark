@@ -67,16 +67,25 @@ Unlike traditional approaches that rely on a single dataset or model, this proje
 The models are evaluated using a comprehensive set of classification and regression-based metrics:
 
 Accuracy – Overall correctness of predictions
+
 Precision – Proportion of correct positive predictions
+
 Recall – Ability to capture actual positive cases
+
 F1-Score – Harmonic mean of Precision and Recall
+
 ROC-AUC – Ability to distinguish between classes
 
 🔹 Error & Statistical Metrics
+
 RMSE (Root Mean Squared Error)
+
 MSE (Mean Squared Error)
+
 MAE (Mean Absolute Error)
+
 R² Score (Coefficient of Determination)
+
 MAPE (%) (Mean Absolute Percentage Error)
 
 ---
