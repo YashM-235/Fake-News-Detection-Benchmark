@@ -24,13 +24,13 @@ Unlike traditional approaches that rely on a single dataset or model, this proje
 
 ## 📂 Datasets
 
-* **Real and Fake News Dataset:**
+* **Real and Fake News Dataset(D1):**
   [https://www.kaggle.com/datasets/nopdev/real-and-fake-news-dataset](https://www.kaggle.com/datasets/nopdev/real-and-fake-news-dataset)
 
-* **India Headlines News Dataset:**
+* **India Headlines News Dataset(D2):**
   [https://www.kaggle.com/datasets/therohk/india-headlines-news-dataset](https://www.kaggle.com/datasets/therohk/india-headlines-news-dataset)
 
-* **Global News Dataset:**
+* **Global News Dataset(D3):**
   [https://www.kaggle.com/datasets/everydaycodings/global-news-dataset](https://www.kaggle.com/datasets/everydaycodings/global-news-dataset)
 
 ---
