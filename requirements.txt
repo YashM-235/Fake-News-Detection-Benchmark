@@ -1,0 +1,12 @@
+pptxgenjs
+python-pptx
+numpy
+pandas
+matplotlib
+scikit-learn
+xgboost
+lightgbm
+tensorflow
+keras
+gensim
+streamlit
