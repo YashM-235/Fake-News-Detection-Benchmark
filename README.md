@@ -139,7 +139,7 @@ MAPE (%) (Mean Absolute Percentage Error)
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/Fake-News-Detection-Benchmark.git
+git clone https://github.com/YashM-235/Fake-News-Detection-Benchmark.git
 
 # Navigate into project
 cd Fake-News-Detection-Benchmark
