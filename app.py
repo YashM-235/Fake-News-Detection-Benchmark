@@ -284,7 +284,7 @@ def load_models():
         # Dataset-2
         try:
             model_d2 = load_model(
-                os.path.join(MODELS_DIR, "d2_bilstm.h5"),
+                os.path.join(MODELS_DIR, "d2_bilstm.keras"),
                 compile=False
             )
 
