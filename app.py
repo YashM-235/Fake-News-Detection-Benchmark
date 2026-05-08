@@ -23,7 +23,10 @@ st.set_page_config(
 )
 
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
+api_key = (
+    st.secrets.get("GROQ_API_KEY")
+    or os.getenv("GROQ_API_KEY")
+)
 MAX_TEXT_LEN = 2000
 SEQ_LEN = 30
 
