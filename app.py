@@ -293,28 +293,32 @@ def load_models():
 
         # Dataset-2
         try:
-
             model_path = os.path.join(
-                MODELS_DIR,
-                "d2_bilstm.keras"
-            )
-
-            st.write("Loading:", model_path)
-
-            model_d2 = load_model(
-                model_path,
-                compile=False
-            )
-
-            vocab_d2 = joblib.load(
-                os.path.join(MODELS_DIR, "d2_vocab.pkl")
-            )
-
-            st.success("D2 model loaded")
-
-        except Exception as e:
-            st.error(f"D2 loading error: {e}")
-            model_d2, vocab_d2 = None, None
+            MODELS_DIR,
+            "d2_bilstm.keras"
+        )
+    
+        st.write("Loading:", model_path)
+    
+        model_d2 = load_model(
+            model_path,
+            compile=False
+        )
+    
+        st.success("D2 model loaded successfully")
+    
+        vocab_d2 = joblib.load(
+            os.path.join(MODELS_DIR, "d2_vocab.pkl")
+        )
+    
+        st.success("D2 vocab loaded successfully")
+    
+    except Exception as e:
+    
+        import traceback
+        st.error(f"D2 loading error: {str(e)}")
+        st.code(traceback.format_exc())
+        model_d2, vocab_d2 = None, None
 
         return {
             "d1": (tfidf_d1, clf_d1),
