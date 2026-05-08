@@ -273,7 +273,9 @@ def load_models():
         else:
             st.error("Models folder NOT found")
 
+        # =========================
         # Dataset-1
+        # =========================
         tfidf_d1 = joblib.load(
             os.path.join(MODELS_DIR, "d1_tfidf.pkl")
         )
@@ -282,7 +284,9 @@ def load_models():
             os.path.join(MODELS_DIR, "d1_svm.pkl")
         )
 
+        # =========================
         # Dataset-3
+        # =========================
         tfidf_d3 = joblib.load(
             os.path.join(MODELS_DIR, "d3_tfidf.pkl")
         )
@@ -291,35 +295,43 @@ def load_models():
             os.path.join(MODELS_DIR, "d3_gbm.pkl")
         )
 
+        # =========================
         # Dataset-2
+        # =========================
         try:
-            model_path = os.path.join(
-            MODELS_DIR,
-            "d2_bilstm.keras"
-        )
-    
-        st.write("Loading:", model_path)
-    
-        model_d2 = load_model(
-            model_path,
-            compile=False
-        )
-    
-        st.success("D2 model loaded successfully")
-    
-        vocab_d2 = joblib.load(
-            os.path.join(MODELS_DIR, "d2_vocab.pkl")
-        )
-    
-        st.success("D2 vocab loaded successfully")
-    
-    except Exception as e:
-    
-        import traceback
-        st.error(f"D2 loading error: {str(e)}")
-        st.code(traceback.format_exc())
-        model_d2, vocab_d2 = None, None
 
+            model_path = os.path.join(
+                MODELS_DIR,
+                "d2_bilstm.keras"
+            )
+
+            st.write("Loading:", model_path)
+
+            model_d2 = load_model(
+                model_path,
+                compile=False
+            )
+
+            st.success("D2 model loaded successfully")
+
+            vocab_d2 = joblib.load(
+                os.path.join(MODELS_DIR, "d2_vocab.pkl")
+            )
+
+            st.success("D2 vocab loaded successfully")
+
+        except Exception as e:
+
+            import traceback
+
+            st.error(f"D2 loading error: {str(e)}")
+            st.code(traceback.format_exc())
+
+            model_d2, vocab_d2 = None, None
+
+        # =========================
+        # Return models
+        # =========================
         return {
             "d1": (tfidf_d1, clf_d1),
             "d2": (model_d2, vocab_d2),
@@ -327,8 +339,14 @@ def load_models():
         }
 
     except Exception as e:
-        st.error(f"Model loading failed: {e}")
+
+        import traceback
+
+        st.error(f"Model loading failed: {str(e)}")
+        st.code(traceback.format_exc())
+
         return None
+
 
 models = load_models()
 # =========================
