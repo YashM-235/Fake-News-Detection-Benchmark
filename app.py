@@ -263,6 +263,16 @@ def parse_llm_output(llm_text: str):
 def load_models():
 
     try:
+
+        st.write("BASE_DIR:", BASE_DIR)
+        st.write("MODELS_DIR:", MODELS_DIR)
+
+        if os.path.exists(MODELS_DIR):
+            st.write("Models folder found")
+            st.write("Files:", os.listdir(MODELS_DIR))
+        else:
+            st.error("Models folder NOT found")
+
         # Dataset-1
         tfidf_d1 = joblib.load(
             os.path.join(MODELS_DIR, "d1_tfidf.pkl")
@@ -283,8 +293,16 @@ def load_models():
 
         # Dataset-2
         try:
+
+            model_path = os.path.join(
+                MODELS_DIR,
+                "d2_bilstm.keras"
+            )
+
+            st.write("Loading:", model_path)
+
             model_d2 = load_model(
-                os.path.join(MODELS_DIR, "d2_bilstm.keras"),
+                model_path,
                 compile=False
             )
 
@@ -292,8 +310,10 @@ def load_models():
                 os.path.join(MODELS_DIR, "d2_vocab.pkl")
             )
 
+            st.success("D2 model loaded")
+
         except Exception as e:
-            st.warning(f"D2 model loading failed: {e}")
+            st.error(f"D2 loading error: {e}")
             model_d2, vocab_d2 = None, None
 
         return {
@@ -305,7 +325,6 @@ def load_models():
     except Exception as e:
         st.error(f"Model loading failed: {e}")
         return None
-
 
 models = load_models()
 # =========================
