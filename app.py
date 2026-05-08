@@ -10,7 +10,8 @@ from groq import Groq
 
 import warnings
 warnings.filterwarnings("ignore")
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 # =========================
 # CONFIG
 # =========================
@@ -262,17 +263,36 @@ def parse_llm_output(llm_text: str):
 def load_models():
 
     try:
-        tfidf_d1 = joblib.load("d1_tfidf.pkl")
-        clf_d1 = joblib.load("d1_svm.pkl")
+        # Dataset-1
+        tfidf_d1 = joblib.load(
+            os.path.join(MODELS_DIR, "d1_tfidf.pkl")
+        )
 
-        tfidf_d3 = joblib.load("d3_tfidf.pkl")
-        clf_d3 = joblib.load("d3_gbm.pkl")
+        clf_d1 = joblib.load(
+            os.path.join(MODELS_DIR, "d1_svm.pkl")
+        )
 
+        # Dataset-3
+        tfidf_d3 = joblib.load(
+            os.path.join(MODELS_DIR, "d3_tfidf.pkl")
+        )
+
+        clf_d3 = joblib.load(
+            os.path.join(MODELS_DIR, "d3_gbm.pkl")
+        )
+
+        # Dataset-2
         try:
-            model_d2 = load_model("d2_bilstm.h5")
-            vocab_d2 = joblib.load("d2_vocab.pkl")
+            model_d2 = load_model(
+                os.path.join(MODELS_DIR, "d2_bilstm.h5")
+            )
 
-        except Exception:
+            vocab_d2 = joblib.load(
+                os.path.join(MODELS_DIR, "d2_vocab.pkl")
+            )
+
+        except Exception as e:
+            st.warning(f"D2 model loading failed: {e}")
             model_d2, vocab_d2 = None, None
 
         return {
@@ -287,7 +307,6 @@ def load_models():
 
 
 models = load_models()
-
 # =========================
 # PREDICTIONS
 # =========================
